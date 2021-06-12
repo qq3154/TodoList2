@@ -1,0 +1,86 @@
+﻿@model IEnumerable<TodoList.Models.Todo>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index TodoesController</h2>
+
+<div class="form-group">
+    @Html.ActionLink(
+             "Create a new Todo",
+             "Create",
+             "Todoes",
+             null,
+             new { @class = "btn btn-primary" }
+             )
+</div>
+
+@using (Html.BeginForm("Index", "Todoes", FormMethod.Get))
+{
+<div class="form-group">
+    @Html.TextBox("searchString", null, new { placeholder = "Search by Description ...", required = "required" })
+    <button type="submit"><i class="fa fa-search"></i></button>
+</div>
+}
+<div class="form-group">
+    @Html.ActionLink(
+             "My Todo Report",
+             "Report",
+             "Todoes",
+             null,
+             new { @class = "btn btn-default" }
+             )
+    @Html.ActionLink(
+         "My User Information",
+         "Index",
+         "UserInfos",
+         null,
+         new { @class = "btn btn-info" }
+         )
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Description</td>
+                <td>@todo.Category.Name</td>
+                <td>@todo.DueDate.ToString("dd/MMM/yyyy")</td>
+                <td>
+                    @Html.ActionLink(
+                                 "Details",
+                                 "Details",
+                                 "Todoes",
+                                 new { id = todo.Id },
+                                 new { @class = "btn btn-primary" }
+                                 )
+                    @Html.ActionLink(
+                                 "Delete",
+                                 "Delete",
+                                 "Todoes",
+                                 new { id = todo.Id },
+                                 new { @class = "btn btn-danger" }
+                                 )                  
+                    @Html.ActionLink(
+                                 "Edit",
+                                 "Edit",
+                                 "Todoes",
+                                 new { id = todo.Id },
+                                 new { @class = "btn btn-default" }
+                                 )
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
