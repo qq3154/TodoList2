@@ -27,6 +27,11 @@
                     {
                         <li>@Html.ActionLink("My Todoes", "Index", "Todoes")</li>
                         <li>@Html.ActionLink("My User Infomation", "Index", "UserInfos")</li>}
+                        <li>@Html.ActionLink("Category List", "Index", "Categories")</li>
+                        @if (User.IsInRole("manager"))
+						{
+							<li>@Html.ActionLink("Team List", "Index", "Teams")</li>
+						}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

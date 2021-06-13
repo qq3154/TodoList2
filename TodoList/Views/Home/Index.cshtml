@@ -2,5 +2,15 @@
     ViewBag.Title = "Home Page";
 }
 
-<h1>Todo Management Application</h1>
-<p class="lead">An professional application to manage tasks.</p>
+<div class="jumbotron">
+    @if (User.IsInRole("user"))
+    {
+        <h1>Welcome User</h1>
+    }
+    @if (User.IsInRole("manager"))
+    {
+        <h1>Welcome Manager</h1>
+    }
+    <h1>Todo Management Application</h1>
+    <p class="lead">An professional application to manage tasks.</p>
+</div>

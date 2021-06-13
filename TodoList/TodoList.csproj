@@ -49,6 +49,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.8\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,8 +171,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\TodoesController.cs" />
     <Compile Include="Controllers\UserInfosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,15 +204,30 @@
     <Compile Include="Migrations\202106121635162_AddUserInfoTable1.Designer.cs">
       <DependentUpon>202106121635162_AddUserInfoTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106131321296_AddTeamTable.cs" />
+    <Compile Include="Migrations\202106131321296_AddTeamTable.Designer.cs">
+      <DependentUpon>202106131321296_AddTeamTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106131325164_AddTeamUserTable.cs" />
+    <Compile Include="Migrations\202106131325164_AddTeamUserTable.Designer.cs">
+      <DependentUpon>202106131325164_AddTeamUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106131420592_test.cs" />
+    <Compile Include="Migrations\202106131420592_test.Designer.cs">
+      <DependentUpon>202106131420592_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamUser.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UniqueAttribute\Unique.cs" />
     <Compile Include="ViewModels\SatisticalReportViewModel.cs" />
     <Compile Include="ViewModels\TodoCategoriesViewModel.cs" />
   </ItemGroup>
@@ -274,6 +294,10 @@
     <Content Include="Views\Todoes\Report.cshtml" />
     <Content Include="Views\UserInfos\Index.cshtml" />
     <Content Include="Views\UserInfos\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\Teams\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +333,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106121635162_AddUserInfoTable1.resx">
       <DependentUpon>202106121635162_AddUserInfoTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131321296_AddTeamTable.resx">
+      <DependentUpon>202106131321296_AddTeamTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131325164_AddTeamUserTable.resx">
+      <DependentUpon>202106131325164_AddTeamUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106131420592_test.resx">
+      <DependentUpon>202106131420592_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

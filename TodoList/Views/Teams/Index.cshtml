@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TodoList.Models.Team>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="form-group">
+    @Html.ActionLink(
+             "Create a new Team",
+             "Create",
+             "Teams",
+             null,
+             new { @class = "btn btn-primary" }
+             )
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Team Name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model)
+        {
+            <tr>
+                <td>@team.Id</td>
+                <td>@team.Name</td>
+                <td>
+                    @Html.ActionLink(
+                        "Details",
+                        "Details",
+                        "Categories",
+                        new { id = team.Id },
+                        new { @class = "btn btn-primary" }
+                    )
+            </tr>
+        }
+
+</table>

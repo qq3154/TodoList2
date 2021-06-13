@@ -27,6 +27,8 @@ namespace TodoList.Models
         public DbSet<Todo> Todoes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserInfo> UsersInfos { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamUser> TeamsUsers { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
