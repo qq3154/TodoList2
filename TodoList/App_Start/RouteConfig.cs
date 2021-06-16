@@ -18,6 +18,12 @@ namespace TodoList
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                    name: "RemoveMember",
+                    url: "{controller}/{action}/{id}/{userId}",
+                    new { controller = "Teams", action = "RemoveMember", id = "", userId = "" }
+            );
         }
     }
 }

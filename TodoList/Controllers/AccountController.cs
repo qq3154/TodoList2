@@ -149,6 +149,40 @@ namespace TodoList.Controllers
             }
         }
 
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public ActionResult CreateManager()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> CreateManager(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    UserManager.AddToRole(user.Id, "manager");
+                    var userInfo = new UserInfo
+                    {
+                        FullName = model.FullName,
+                        Age = model.Age,
+                        UserId = user.Id
+                    };
+                    _context.UsersInfos.Add(userInfo);
+                    _context.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -170,6 +204,7 @@ namespace TodoList.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "user");
                     var userInfo = new UserInfo
                     {
                         FullName = model.FullName,

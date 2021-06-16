@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="UniqueAttribute\Unique.cs" />
     <Compile Include="ViewModels\SatisticalReportViewModel.cs" />
+    <Compile Include="ViewModels\TeamUsersViewModel.cs" />
     <Compile Include="ViewModels\TodoCategoriesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +300,11 @@
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Teams\Members.cshtml" />
+    <Content Include="Views\Teams\AddMembers.cshtml" />
+    <Content Include="Views\Teams\Mine.cshtml" />
+    <Content Include="Views\Account\CreateManager.cshtml" />
+    <Content Include="Views\Admin\ShowManagers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
