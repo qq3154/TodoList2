@@ -95,7 +95,7 @@ namespace TodoList.Controllers
 			foreach (var user in usersInDb)
 			{
 				if (!usersInTeam.Contains(user) &&
-					_userManager.GetRoles(user.Id)[0].Equals("user"))
+					_userManager.GetRoles(user.Id)[0].Equals("manager"))
 				{
 					usersToAdd.Add(user);
 				}

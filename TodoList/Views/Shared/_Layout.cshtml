@@ -23,20 +23,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
                     @if (User.Identity.IsAuthenticated && !User.IsInRole("admin"))
                     {
                         <li>@Html.ActionLink("My Todoes", "Index", "Todoes")</li>
-                        <li>@Html.ActionLink("My User Infomation", "Index", "UserInfos")</li>}
+                        <li>@Html.ActionLink("My User Infomation", "Index", "UserInfos")</li>
                         <li>@Html.ActionLink("Category List", "Index", "Categories")</li>
-                        @if (User.IsInRole("user"))
-						{
-							<li>@Html.ActionLink("My Teams", "Mine", "Teams")</li>
+                        if (User.IsInRole("user"))
+                        {
+                            <li>@Html.ActionLink("My Teams", "Mine", "Teams")</li>
 
-						}
-                        @if (User.IsInRole("manager"))
-						{
-							<li>@Html.ActionLink("Team List", "Index", "Teams")</li>
-						}
+                        }
+                        if (User.IsInRole("manager"))
+                        {
+                            <li>@Html.ActionLink("Team List", "Index", "Teams")</li>
+                        }
+                    }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
